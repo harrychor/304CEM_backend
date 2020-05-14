@@ -6,9 +6,8 @@ const server = restify.createServer();
 
 
 
-//middleware
 server.use(restify.plugins.bodyParser());
-server.use(rjwt({ secret: config.JWT_SECRET}).unless({ path: ['/auth']}));
+//server.use(rjwt({ secret: config.JWT_SECRET}).unless({ path: ['/auth']}));
 
 server.listen(config.PORT, () => {
     mongoose.set('useFindAndModify', false);
@@ -23,7 +22,7 @@ const db = mongoose.connection;
 db.on('error', err => console.log(err));
 
 db.once('open', () => {
-    require('./routes/moive')(server);
+    //require('./routes/game')(server);
     require('./routes/customers')(server);
     require('./routes/user')(server);
     console.log(`Server started on port ${config.PORT}`);
