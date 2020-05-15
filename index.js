@@ -3,8 +3,16 @@ const mongoose = require('mongoose');
 const config = require('./config');
 const rjwt = require('restify-jwt-community');
 const server = restify.createServer();
-
-
+const corsMiddleware = require('restify-cors-middleware')
+ 
+const cors = corsMiddleware({
+  preflightMaxAge: 5, //Optional
+  origins: ['https://cycheng1688.github.io/bookclient/', 'localhost:4200'],
+  allowHeaders: ['Authorization'],
+  credentials:true,
+  allowmethods:['GET', 'PUT', 'POST','DELETE','PATCH','OPTIONS'],
+  exposeHeaders: ['Authorization']
+})
 
 server.use(restify.plugins.bodyParser());
 //server.use(rjwt({ secret: config.JWT_SECRET}).unless({ path: ['/auth']}));
