@@ -7,7 +7,7 @@ const corsMiddleware = require('restify-cors-middleware')
  
 const cors = corsMiddleware({
   preflightMaxAge: 5, //Optional
-  origins: ['https://cycheng1688.github.io/bookclient/', 'localhost:4200'],
+  origins: ['http://localhost/', 'localhost:4200'],
   allowHeaders: ['Authorization'],
   credentials:true,
   allowmethods:['GET', 'PUT', 'POST','DELETE','PATCH','OPTIONS'],
