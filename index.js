@@ -4,7 +4,8 @@ const config = require('./config');
 const rjwt = require('restify-jwt-community');
 var server = restify.createServer();
 const corsMiddleware = require('restify-cors-middleware')
- 
+
+jQuery.support.cors = true;
 const cors = corsMiddleware({
   preflightMaxAge: 5, //Optional
   origins: ['http://localhost/', 'localhost:4200'],
