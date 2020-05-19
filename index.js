@@ -2,7 +2,7 @@ const restify = require('restify');
 const mongoose = require('mongoose');
 const config = require('./config');
 const rjwt = require('restify-jwt-community');
-const server = restify.createServer();
+var server = restify.createServer();
 const corsMiddleware = require('restify-cors-middleware')
  
 const cors = corsMiddleware({
