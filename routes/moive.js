@@ -12,14 +12,15 @@ server.get('/moive/:q',async function(req, res, next){
     request.get(url, function(error, response, body){
         if(!error && response.statusCode == 200){
             const moives = []
-            const data = JSON.parse(body);
+            const data = JSON.parse(body).Search;
+            
             for (let i = 0; i < data.length; i++) {
                 const moive = {
                     Title: data[i].Title,
-                    Year: data[i].volumeInfo.Year,
-                    imdbID: data[i].volumeInfo.imdbID,
-                    Type: data[i].volumeInfo.Type,
-                    Poster: data[i].volumeInfo.Poster
+                    Year: data[i].Year,
+                    imdbID: data[i].imdbID,
+                    Type: data[i].Type,
+                    Poster: data[i].Poster
                 }
                 moives.push(moive);
             }

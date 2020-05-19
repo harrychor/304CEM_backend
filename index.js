@@ -5,15 +5,19 @@ const rjwt = require('restify-jwt-community');
 var server = restify.createServer();
 const corsMiddleware = require('restify-cors-middleware')
 
-jQuery.support.cors = true;
 const cors = corsMiddleware({
   preflightMaxAge: 5, //Optional
-  origins: ['http://localhost/', 'localhost:4200'],
+  origins: ['localhost:4200'],
   allowHeaders: ['Authorization'],
   credentials:true,
   allowmethods:['GET', 'PUT', 'POST','DELETE','PATCH','OPTIONS'],
   exposeHeaders: ['Authorization']
 })
+
+server.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
 
 server.use(restify.plugins.bodyParser());
 //server.use(rjwt({ secret: config.JWT_SECRET}).unless({ path: ['/auth']}));
