@@ -7,12 +7,13 @@ const corsMiddleware = require('restify-cors-middleware')
 
 const cors = corsMiddleware({
   preflightMaxAge: 5, //Optional
-  origins: ['localhost:4200'],
+  origins: ['localhost:3000','localhost:4200'],
   allowHeaders: ['Authorization'],
   credentials:true,
   allowmethods:['GET', 'PUT', 'POST','DELETE','PATCH','OPTIONS'],
   exposeHeaders: ['Authorization']
 })
+
 
 server.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
