@@ -39,7 +39,7 @@ db.on('error', err => console.log(err));
 
 db.once('open', () => {
     require('./routes/moive')(server);
-    require('./routes/customers')(server);
+    require('./routes/favourites')(server);
     require('./routes/user')(server);
     console.log(`Server started on port ${config.PORT}`);
   });

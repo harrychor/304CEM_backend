@@ -1,6 +1,6 @@
 const errors = require('restify-errors');
 const jwt = require('jsonwebtoken');
-const Customer = require('../models/Customers');
+const Customer = require('../models/Favourits');
 const config = require('../config');
 const rjwt = require('restify-jwt-community');
 

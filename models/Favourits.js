@@ -2,19 +2,25 @@ const mongoose = require('mongoose');
 const timestamp = require('mongoose-timestamp');
 
 const CustomerSchema = new mongoose.Schema({
-    name:{
+    Title:{
         type: String,
         required: true,
         trim: true
     },
-    email: {
+    Year: {
         type: String,
         required: true,
         trim: true
     },
-    balance: {
+    imdb: {
         type: Number,
-        default: 0
+        required: true,
+        trim: true
+    },
+    Poster: {
+        type: String,
+        required: true,
+        trim: true
     }
 
 });
