@@ -13,7 +13,8 @@ const cors = corsMiddleware({
   allowmethods:['GET', 'PUT', 'POST','DELETE','PATCH','OPTIONS'],
   exposeHeaders: ['Authorization']
 })
-
+server.pre(cors.preflight)
+server.use(cors.actual)
 
 server.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
