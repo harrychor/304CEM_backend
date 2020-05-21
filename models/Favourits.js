@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const timestamp = require('mongoose-timestamp');
 
-const CustomerSchema = new mongoose.Schema({
+const FavouritesSchema = new mongoose.Schema({
     Title:{
         type: String,
         required: true,
@@ -12,7 +12,7 @@ const CustomerSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    imdb: {
+    imdbID: {
         type: Number,
         required: true,
         trim: true
@@ -25,7 +25,7 @@ const CustomerSchema = new mongoose.Schema({
 
 });
 
-CustomerSchema.plugin(timestamp);
+FavouritesSchema.plugin(timestamp);
 
-const Customer = mongoose.model('Customer', CustomerSchema);
-module.exports = Customer;
+const Favourites = mongoose.model('Favourites', FavouritesSchema);
+module.exports = Favourites;

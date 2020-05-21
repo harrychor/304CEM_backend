@@ -1,64 +1,62 @@
 const errors = require('restify-errors');
 const jwt = require('jsonwebtoken');
-const Favourites = require('../models/Favourits');
+const Uerprofile = require('../models/Uprofile');
 const config = require('../config');
 const rjwt = require('restify-jwt-community');
 
 
 module.exports = server =>{
-    //Get favourites
-    server.get('/favourites', async (req, res, next) => {
-        try{
-            const favourites = await Favourites.find({});
-            res.send(favourites);
-            next();
-        } catch(err){
-            return next(new errors.InvalidContentError(err));
-        }
-    });
+//Get userprofile
+server.get('/userprofile', async (req, res, next) => {
+    try{
+        const userprofile = await Uerprofile.find({});
+        res.send(userprofile);
+        next();
+    } catch(err){
+        return next(new errors.InvalidContentError(err));
+    }
+});
 
-    //Get Single favourites
-    server.get('/favourites/:id', async (req, res, next) => {
+    //Get Single userprofile
+    server.get('/userprofile/:id', async (req, res, next) => {
         try{
-            const favourites = await Favourites.findById(req.params.id);
-            res.send(favourites);
+            const userprofile = await Uerprofile.findById(req.params.id);
+            res.send(userprofile);
             next();
         } catch(err){
             return next(new errors.ResourceNotFoundError(`There is no customer with the id of ${req.params.id}`));
         }
     });
 
-    //Add favourites
-    server.post('/favourites', rjwt({ secret: config.JWT_SECRET}), async (req, res, next) => {
+    //Add userprofile
+    server.post('/userprofile'/*, rjwt({ secret: config.JWT_SECRET})*/, async (req, res, next) => {
         //Check for JSON
         if (!req.is('application/json')){
             return next(new errors.InvalidContentError("Expects 'application/json'"));
         }
 
-        const {Title , Year, imdbID, Poster} = req.body;
-        const favourites = new Favourites({
-            Title,
-            Year,
-            imdbID,
-            Poster
+        const {username , email} = req.body;
+        const userprofile = new Uerprofile({
+            username,
+            email,
         });
 
         try {
-            const newCustomer = await favourites.save();
+            const newCustomer = await userprofile.save();
             res.send(201);
             next();
         }catch(err){
             return next(new errors.InternalError(err.message));
         }
     });
-    //Update favourites
-    server.put('/favourites/:id', rjwt({ secret: config.JWT_SECRET}),async (req, res, next) => {
+    //Update userprofile
+    server.put('/userprofile/:id', rjwt({ secret: config.JWT_SECRET}),async (req, res, next) => {
         //Check for JSON
         if (!req.is('application/json')){
             return next(new errors.InvalidContentError("Expects 'application/json'"));
         }
         try {
-            const newCustomer = await Favourites.findOneAndUpdate({_id: req.params.id}, req.body);
+            const newCustomer = await Uerprofile.findOneAndUpdate({_id: req.params.id}, req.body);
             res.send(200);
             next();
         }catch(err){
@@ -66,10 +64,10 @@ module.exports = server =>{
         }
     });
 
-    //Delete favourites
-    server.del('/favourites/:id', async (req, res, next) =>{
+    //Delete userprofile
+    server.del('/userprofile/:id', async (req, res, next) =>{
         try{
-            const customer = await Favourites.findOneAndRemove({_id: req.params.id });
+            const customer = await Uerprofile.findOneAndRemove({_id: req.params.id });
             res.send(204);
             next();
         }catch(err){

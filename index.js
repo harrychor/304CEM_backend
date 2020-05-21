@@ -38,6 +38,7 @@ const db = mongoose.connection;
 db.on('error', err => console.log(err));
 
 db.once('open', () => {
+    require('./routes/uprofile')(server);
     require('./routes/moive')(server);
     require('./routes/favourites')(server);
     require('./routes/user')(server);
