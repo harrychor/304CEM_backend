@@ -18,6 +18,7 @@ server.use(cors.actual)
 
 server.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
+  res.header("Access-Control-Allow-Headers", "x-requested-with, x-requested-by");
   next();
 });
 
