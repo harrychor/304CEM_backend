@@ -18,9 +18,9 @@ server.get('/userprofile', async (req, res, next) => {
 });
 
     //Get Single userprofile
-    server.get('/userprofile/:id', async (req, res, next) => {
+    server.get('/userprofile/:email', async (req, res, next) => {
         try{
-            const userprofile = await Uerprofile.findById(req.params.id);
+            const userprofile = await Uerprofile.find({email: req.params.email});
             res.send(userprofile);
             next();
         } catch(err){
