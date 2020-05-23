@@ -29,7 +29,7 @@ module.exports = server =>{
     });
 
     //Add favourites
-    server.post('/favourites', rjwt({ secret: config.JWT_SECRET}), async (req, res, next) => {
+    server.post('/favourites'/*, rjwt({ secret: config.JWT_SECRET})*/, async (req, res, next) => {
         //Check for JSON
         if (!req.is('application/json')){
             return next(new errors.InvalidContentError("Expects 'application/json'"));
@@ -52,7 +52,7 @@ module.exports = server =>{
         }
     });
     //Update favourites
-    server.put('/favourites/:id', rjwt({ secret: config.JWT_SECRET}),async (req, res, next) => {
+    server.put('/favourites/:id'/*, rjwt({ secret: config.JWT_SECRET})*/,async (req, res, next) => {
         //Check for JSON
         if (!req.is('application/json')){
             return next(new errors.InvalidContentError("Expects 'application/json'"));

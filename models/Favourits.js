@@ -2,6 +2,11 @@ const mongoose = require('mongoose');
 const timestamp = require('mongoose-timestamp');
 
 const FavouritesSchema = new mongoose.Schema({
+    email:{
+        type: String,
+        required: true,
+        trim: true
+    },
     Title:{
         type: String,
         required: true,
