@@ -18,7 +18,7 @@ const FavouritesSchema = new mongoose.Schema({
         trim: true
     },
     imdbID: {
-        type: Number,
+        type: String,
         required: true,
         trim: true
     },
