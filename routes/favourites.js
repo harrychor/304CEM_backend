@@ -37,6 +37,7 @@ module.exports = server =>{
 
         const {Title , Year, imdbID, Poster} = req.body;
         const favourites = new Favourites({
+            email,
             Title,
             Year,
             imdbID,
