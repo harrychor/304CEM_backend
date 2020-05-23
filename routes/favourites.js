@@ -35,7 +35,7 @@ module.exports = server =>{
             return next(new errors.InvalidContentError("Expects 'application/json'"));
         }
 
-        const {Title , Year, imdbID, Poster} = req.body;
+        const {email,Title , Year, imdbID, Poster} = req.body;
         const favourites = new Favourites({
             email,
             Title,
