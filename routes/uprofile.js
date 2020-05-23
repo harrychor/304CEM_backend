@@ -50,13 +50,13 @@ server.get('/userprofile', async (req, res, next) => {
         }
     });
     //Update userprofile
-    server.put('/userprofile/:id', rjwt({ secret: config.JWT_SECRET}),async (req, res, next) => {
+    server.put('/userprofile/:email'/*, rjwt({ secret: config.JWT_SECRET})*/,async (req, res, next) => {
         //Check for JSON
         if (!req.is('application/json')){
             return next(new errors.InvalidContentError("Expects 'application/json'"));
         }
         try {
-            const newCustomer = await Uerprofile.findOneAndUpdate({_id: req.params.id}, req.body);
+            const newCustomer = await Uerprofile.findOneAndUpdate({email: req.params.email}, req.body);
             res.send(200);
             next();
         }catch(err){
