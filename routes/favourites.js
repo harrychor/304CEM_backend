@@ -6,7 +6,7 @@ const rjwt = require('restify-jwt-community');
 
 
 module.exports = server =>{
-    //Get favourites
+    //Get all favourites
     server.get('/favourites', async (req, res, next) => {
         try{
             const favourites = await Favourites.find({});
@@ -17,10 +17,10 @@ module.exports = server =>{
         }
     });
 
-    //Get Single favourites
-    server.get('/favourites/:id', async (req, res, next) => {
+    //Get favourites
+    server.get('/favourites/:email', async (req, res, next) => {
         try{
-            const favourites = await Favourites.findById(req.params.id);
+            const favourites = await Favourites.find({email: req.params.email});
             res.send(favourites);
             next();
         } catch(err){

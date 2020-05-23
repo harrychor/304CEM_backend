@@ -6,7 +6,7 @@ const rjwt = require('restify-jwt-community');
 
 
 module.exports = server =>{
-//Get userprofile
+//Get all userprofile
 server.get('/userprofile', async (req, res, next) => {
     try{
         const userprofile = await Uerprofile.find({});
@@ -17,7 +17,7 @@ server.get('/userprofile', async (req, res, next) => {
     }
 });
 
-    //Get Single userprofile
+    //Get userprofile
     server.get('/userprofile/:email', async (req, res, next) => {
         try{
             const userprofile = await Uerprofile.find({email: req.params.email});
