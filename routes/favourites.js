@@ -63,10 +63,10 @@ module.exports = server =>{
             res.send(200);
             next();
         }catch(err){
-            return next(new errors.ResourceNotFoundError(`There is no customer with the id of ${req.params.id}`));
+            return next(new errors.ResourceNotFoundError(`There is no movie with the id of ${req.params.id}`));
         }
     });
-
+    
     //Delete favourites
     server.del('/favourites/:id', async (req, res, next) =>{
         try{
@@ -74,7 +74,7 @@ module.exports = server =>{
             res.send(204);
             next();
         }catch(err){
-            return next(new errors.ResourceNotFoundError(`There is no customer with the id of ${req.params.id}`));
+            return next(new errors.ResourceNotFoundError(`There is no movie with the id of ${req.params.id}`));
         }
     });
 
